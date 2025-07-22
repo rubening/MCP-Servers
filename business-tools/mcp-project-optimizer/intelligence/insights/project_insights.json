@@ -1,0 +1,68 @@
+{
+  "_schema_version": "1.0",
+  "_last_updated": "2025-07-05T18:08:27.837138",
+  "insights": [
+    {
+      "insight_id": "auto_fixable_patterns_20250705_175832",
+      "category": "optimization",
+      "priority": "medium",
+      "title": "Automated Fixes Available",
+      "description": "1 error patterns have automated solutions ready for deployment",
+      "actionable_steps": [
+        "Run auto_update_knowledge_base to apply fixes",
+        "Test automated fixes in development environment",
+        "Schedule regular auto-fix application"
+      ],
+      "impact_assessment": "Medium - Automation reduces manual debugging time",
+      "discovered_at": "2025-07-05T17:58:32.283810"
+    },
+    {
+      "insight_id": "new_discoveries_20250705_175832",
+      "category": "discovery",
+      "priority": "medium",
+      "title": "New Technical Discoveries Available",
+      "description": "1 new technical solutions ready for integration",
+      "actionable_steps": [
+        "Review and validate new discoveries",
+        "Update project documentation with solutions",
+        "Share discoveries with team members"
+      ],
+      "impact_assessment": "Medium - New solutions improve efficiency and prevent future issues",
+      "discovered_at": "2025-07-05T17:58:32.283854"
+    },
+    {
+      "insight_id": "high_activity_20250705_175832",
+      "category": "optimization",
+      "priority": "low",
+      "title": "High System Usage Detected",
+      "description": "Active usage pattern with 8 sessions in past week",
+      "actionable_steps": [
+        "Monitor system performance under load",
+        "Consider optimizing frequently used features",
+        "Implement usage analytics for better insights"
+      ],
+      "impact_assessment": "Low - Usage patterns indicate system value and adoption",
+      "discovered_at": "2025-07-05T17:58:32.283884"
+    },
+    {
+      "insight_id": "complex_structure_20250705_175832",
+      "category": "improvement",
+      "priority": "low",
+      "title": "Complex Project Structure",
+      "description": "Project contains 34 files, consider organization review",
+      "actionable_steps": [
+        "Organize files into logical subdirectories",
+        "Archive or remove unused files",
+        "Create project structure documentation"
+      ],
+      "impact_assessment": "Low - Better organization improves navigation",
+      "discovered_at": "2025-07-05T17:58:32.286834"
+    }
+  ],
+  "insight_categories": {
+    "optimization": 2,
+    "warning": 0,
+    "improvement": 1,
+    "discovery": 1
+  }
+}

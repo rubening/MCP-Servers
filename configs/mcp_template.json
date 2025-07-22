@@ -1,0 +1,95 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "py",
+      "args": ["{{ONEDRIVE_PATH}}\\MCP_Servers\\servers\\filesystem_mcp.py"]
+    },
+    "execute-command": {
+      "command": "py", 
+      "args": ["{{ONEDRIVE_PATH}}\\MCP_Servers\\servers\\execute_command_mcp.py"]
+    },
+    "git": {
+      "command": "py",
+      "args": ["{{ONEDRIVE_PATH}}\\MCP_Servers\\servers\\git_mcp.py"]
+    },
+    "youtube": {
+      "command": "py",
+      "args": ["{{ONEDRIVE_PATH}}\\MCP_Servers\\servers\\youtube_mcp.py"]
+    },
+    "project-instructions-generator": {
+      "command": "py",
+      "args": ["{{ONEDRIVE_PATH}}\\MCP_Servers\\servers\\project_instructions_generator.py"]
+    },
+    "personal-knowledge-intelligence": {
+      "command": "py",
+      "args": [
+        "{{ONEDRIVE_PATH}}\\MCP_Servers\\servers\\personal-knowledge-intelligence\\personal_knowledge_intelligence_server.py",
+        "--db-path",
+        "{{ONEDRIVE_PATH}}\\MCP_Servers\\data\\personal_intelligence.db"
+      ]
+    },
+    "duckdb-analytics": {
+      "command": "py",
+      "args": [
+        "{{ONEDRIVE_PATH}}\\MCP_Servers\\servers\\duckdb-analytics\\duckdb_analytics_server.py",
+        "--db-path",
+        "{{ONEDRIVE_PATH}}\\MCP_Servers\\data\\business_intelligence.db"
+      ]
+    },
+    "github": {
+      "command": "docker",
+      "args": ["run", "--rm", "-i", "-e", "GITHUB_PERSONAL_ACCESS_TOKEN=ghp_abcdefghijklmnopqrstuvwxyz1234567890", "ghcr.io/github/github-mcp-server"]
+    },
+    "playwright": {
+      "command": "docker",
+      "args": ["run", "--rm", "-i", "--cap-add=SYS_ADMIN", "mcr.microsoft.com/playwright/mcp"]
+    },
+    "sequentialthinking": {
+      "command": "docker",
+      "args": ["run", "--rm", "-i", "mcp/sequentialthinking"]
+    },
+    "deepseek": {
+      "command": "py",
+      "args": ["{{ONEDRIVE_PATH}}\\MCP_Servers\\servers\\deepseek_mcp_protocol_fixed.py"],
+      "env": {
+        "OPENROUTER_API_KEY": "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"
+      }
+    },
+    "clickup": {
+      "command": "npx",
+      "args": ["-y", "@taazkareem/clickup-mcp-server@latest"],
+      "env": {
+        "CLICKUP_API_KEY": "pk_43038179_ID59KLLAJJFMW1KQ57I6ODJ58MP98392",
+        "CLICKUP_TEAM_ID": "30972550",
+        "DOCUMENT_SUPPORT": "true"
+      }
+    },
+    "chroma-secure": {
+      "command": "py",
+      "args": [
+        "{{ONEDRIVE_PATH}}\\MCP_Servers\\servers\\chroma_secure_fixed.py",
+        "--data-dir",
+        "{{LOCAL_SECURE_PATH}}\\secure_data\\chroma_law_firm"
+      ]
+    },
+    "gdrive": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-gdrive"],
+      "env": {
+        "GDRIVE_CREDENTIALS_PATH": "{{LOCAL_SECURE_PATH}}\\config\\gdrive-credentials.json"
+      }
+    },
+    "ai-knowledge-graph": {
+      "command": "py",
+      "args": [
+        "ai_knowledge_graph_mcp.py"
+      ],
+      "cwd": "{{ONEDRIVE_PATH}}\\MCP_Servers\\servers\\ai-knowledge-graph",
+      "env": {
+        "NEO4J_URI": "bolt://localhost:7687",
+        "NEO4J_USER": "neo4j",
+        "NEO4J_PASSWORD": "neo4j_password"
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "project-management-mcp": {
+      "command": "py",
+      "args": ["C:\\Users\\ruben\\Claude Tools\\mcp-servers\\project-management-mcp\\project_management_mcp.py"]
+    }
+  }
+}

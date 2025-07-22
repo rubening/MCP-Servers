@@ -1,0 +1,35 @@
+{
+  "backups": [
+    {
+      "backup_id": "test_backup_20250704_190141",
+      "backup_name": "test_backup",
+      "original_path": "C:\\Users\\ruben\\OneDrive\\Documents\\mcp_servers\\mcp-project-optimizer\\test_backup_sample.md",
+      "backup_path": "C:\\Users\\ruben\\OneDrive\\Documents\\mcp_servers\\mcp-project-optimizer\\backups\\test_backup_20250704_190141\\project_knowledge.md",
+      "created_at": "2025-07-04T19:01:41.105736",
+      "file_size": 189,
+      "file_hash": "1475099b07b1ebde0333eb3348a5ae5df70e932b63925ad75ae2b39a2c2471db",
+      "quality_analysis": {
+        "overall_score": 71.5,
+        "scores": {
+          "structure": 85.0,
+          "content": 70.0,
+          "clarity": 100.0,
+          "context": 21.0
+        },
+        "total_words": 28,
+        "total_sections": 2
+      }
+    },
+    {
+      "backup_id": "pre_enhancement_final_20250704_200401",
+      "backup_name": "pre_enhancement_final",
+      "original_path": "C:\\Users\\ruben\\OneDrive\\Documents\\mcp_servers\\mcp-project-optimizer\\server.py",
+      "backup_path": "C:\\Users\\ruben\\OneDrive\\Documents\\mcp_servers\\mcp-project-optimizer\\backups\\pre_enhancement_final_20250704_200401\\project_knowledge.md",
+      "created_at": "2025-07-04T20:04:01.307370",
+      "file_size": 73609,
+      "file_hash": "e38168d68fb65764bdf20f89787b862ae203411c20210c0ad9719d77ad8147a0"
+    }
+  ],
+  "created_at": "2025-07-04T19:01:41.181051",
+  "last_updated": "2025-07-04T20:04:01.328703"
+}

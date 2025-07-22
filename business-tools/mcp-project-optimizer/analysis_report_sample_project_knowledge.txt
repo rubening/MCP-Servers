@@ -1,0 +1,80 @@
+============================================================
+  MCP PROJECT KNOWLEDGE OPTIMIZER
+  AI-Effectiveness Analysis Report
+============================================================
+
+File Analyzed: sample_project_knowledge.md
+--------------------------------------------------
+
+OVERALL QUALITY SCORE: 82.2/100 (EXCELLENT [PASS])
+
+DETAILED SCORES:
+   Structure:    100.0/100
+   Content:      70.0/100
+   Clarity:      100.0/100
+   Context:      56.0/100
+
+KEY METRICS:
+   Total Words:     429
+   Sections:        19
+   Max Section:     32 words
+   Avg Section:     19.5 words
+   Header Depth:    3 levels
+   Code Blocks:     Yes
+   Appendices:      No
+
+RECOMMENDATIONS (3 items):
+   1. CONTEXT: Strengthen context section - add project overview, technical stack, constraints, and key decisions
+   2. CONTEXT: Move critical context to the beginning of the document
+   3. ORGANIZATION: Consider adding appendix sections for detailed reference material
+
+SECTION BREAKDOWN:
+   1. H1: Project Knowledge Sample
+      Words: 0 [OK]
+   2.   H2: Project Overview
+        Words: 28 [OK]
+   3.   H2: Technical Stack
+        Words: 27 [OK]
+   4.   H2: Current Status
+        Words: 21 [OK]
+   5.   H2: Setup Instructions
+        Words: 0 [OK]
+   6.     H3: Local Development
+          Words: 27 [OK]
+   7.     H3: Database Setup
+          Words: 17 [OK]
+   8.   H2: Architecture Decisions
+        Words: 0 [OK]
+   9.     H3: Why FastAPI over Flask
+          Words: 23 [OK]
+   10.     H3: Database Design
+          Words: 23 [OK]
+   11.   H2: API Endpoints
+        Words: 0 [OK]
+   12.     H3: User Management
+          Words: 27 [OK]
+   13.     H3: Authentication
+          Words: 20 [OK]
+   14.   H2: Testing Strategy
+        Words: 32 [OK]
+   15.   H2: Deployment Process
+        Words: 23 [OK]
+   16.   H2: Security Considerations
+        Words: 31 [OK]
+   17.   H2: Performance Notes
+        Words: 22 [OK]
+   18.   H2: Known Issues
+        Words: 26 [OK]
+   19.   H2: Future Roadmap
+        Words: 23 [OK]
+
+OPTIMIZATION TIPS:
+   - Keep sections under 750 words for better readability
+   - Target 1,000-2,000 total words for optimal AI effectiveness
+   - Start with context: project overview, tech stack, constraints
+   - Use bullet points and code blocks for clarity
+   - Move detailed info to appendix sections
+   - Limit header nesting to 4 levels maximum
+
+Analysis completed successfully!
+============================================================

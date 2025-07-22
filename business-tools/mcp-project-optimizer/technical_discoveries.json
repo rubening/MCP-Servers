@@ -1,0 +1,51 @@
+{
+  "windows_python_command": {
+    "issue": "Python command not found in Windows",
+    "solution": "Use 'py' instead of 'python' command",
+    "category": "environment",
+    "date_discovered": "2024-01-01",
+    "status": "resolved"
+  },
+  "mcp_protocol_version": {
+    "issue": "MCP protocol version incompatibility",
+    "solution": "Use version '2024-11-05' not '1.0.0'",
+    "category": "protocol",
+    "date_discovered": "2024-01-01",
+    "status": "resolved"
+  },
+  "mcp_stdin_handling": {
+    "issue": "MCP stdin requires async executor",
+    "solution": "Use async executor instead of synchronous readline",
+    "category": "async",
+    "date_discovered": "2024-01-01",
+    "status": "resolved"
+  },
+  "powershell_syntax": {
+    "issue": "PowerShell && syntax not supported",
+    "solution": "Use separate commands instead of && chaining",
+    "category": "shell",
+    "date_discovered": "2024-01-01",
+    "status": "resolved"
+  },
+  "utf8_encoding": {
+    "issue": "UTF-8 encoding issues with special characters",
+    "solution": "Explicitly specify encoding='utf-8' in file operations",
+    "category": "encoding",
+    "date_discovered": "2024-01-01",
+    "status": "resolved"
+  },
+  "windows_file_paths": {
+    "issue": "File path handling inconsistencies",
+    "solution": "Use backslashes on Windows, Path() for cross-platform",
+    "category": "filesystem",
+    "date_discovered": "2024-01-01",
+    "status": "resolved"
+  },
+  "pip_path_issue": {
+    "issue": "pip command not in PATH",
+    "solution": "Use 'py -m pip' instead of direct pip command",
+    "category": "environment",
+    "date_discovered": "2024-01-01",
+    "status": "resolved"
+  }
+}

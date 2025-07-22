@@ -1,0 +1,33 @@
+{
+  "_schema_version": "1.0",
+  "_last_updated": "2025-07-05T18:08:14.902418",
+  "patterns": {
+    "version_mismatch_37f60a4d": {
+      "error_type": "version_mismatch",
+      "frequency": 1,
+      "contexts": [
+        "User: help me fix:\n\n} %o\n2025-07-05T08:56:13.920Z [project-knowledge-optimizer] [info] Server starte"
+      ],
+      "solutions": [],
+      "last_seen": "2025-07-05T04:58:58.913391",
+      "confidence_score": 0.25,
+      "auto_fix_available": false
+    },
+    "command_not_found_0bedc6a8": {
+      "error_type": "command_not_found",
+      "frequency": 1,
+      "contexts": [
+        "This is a test conversation to see if the intelligence system is working. We had an error with pytho"
+      ],
+      "solutions": [],
+      "last_seen": "2025-07-05T17:33:24.189346",
+      "confidence_score": 0.3,
+      "auto_fix_available": true
+    }
+  },
+  "pattern_stats": {
+    "total_patterns": 2,
+    "active_patterns": 0,
+    "resolved_patterns": 0
+  }
+}

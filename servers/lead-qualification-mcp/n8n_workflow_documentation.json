@@ -1,0 +1,111 @@
+{
+  "workflow_name": "tonyramoslaw | New Contact -> formatting, airtable, clickup",
+  "workflow_type": "lead_qualification_automation",
+  "source_systems": ["CallRail", "ActiveCampaign"],
+  "target_systems": ["Airtable", "ClickUp"],
+  "business_logic_patterns": {
+    "configuration_management": {
+      "description": "Centralized configuration for all system IDs and credentials",
+      "implementation": "Single Configuration node with JSON object containing all base IDs, list IDs, custom field mappings",
+      "pattern": "config_centralization"
+    },
+    "universal_normalization": {
+      "description": "Universal payload normalizer handling multiple webhook formats",
+      "key_functions": [
+        "source_detection",
+        "phone_normalization", 
+        "name_parsing",
+        "utm_extraction",
+        "datetime_parsing"
+      ],
+      "error_handling": "Graceful fallbacks with debug information"
+    },
+    "contact_deduplication": {
+      "description": "UPSERT logic using phone OR email composite matching",
+      "search_strategy": "OR(TRIM({phone})=normalized_phone, AND({email}!=empty, {email}=provided_email))",
+      "update_strategy": "only_update_empty_fields",
+      "lifecycle_management": "stage_upgrade_rules"
+    },
+    "interaction_tracking": {
+      "description": "Separate interaction records linked to contacts",
+      "data_captured": ["utm_parameters", "duration", "source_attribution", "raw_payload"],
+      "relationships": "contact_id foreign key linkage"
+    },
+    "clickup_task_creation": {
+      "description": "Conditional task creation with relationship management",
+      "custom_fields_mapping": "dynamic field population based on interaction type",
+      "relationship_handling": "bidirectional task linking between contact and interaction tasks"
+    }
+  },
+  "data_flow": [
+    "Webhook -> Configuration -> Normalize Data -> Search Contact -> Contact UPSERT Logic -> UPSERT Contact -> Prepare Interaction -> Create Interaction -> Has ClickUp Task? -> Prepare ClickUp Tasks -> Create Contact Task -> Add Task Relationship -> Create Interaction Task -> Add Interaction to Contact Task -> Update Contact Task -> Update Airtable with ClickUp URL"
+  ],
+  "webhook_formats": {
+    "callrail": {
+      "identification": "call_type field presence",
+      "key_fields": ["customer_phone_number", "customer_name", "duration", "recording", "transcription", "utm_source"],
+      "nested_structure": "flat object with optional query parameters"
+    },
+    "activecampaign": {
+      "identification": "contact[id] or contact.id field presence", 
+      "key_fields": ["contact[email]", "contact[first_name]", "contact[fields][utmsource]"],
+      "nested_structure": "flattened format contact[fields][field_name] or nested contact.fields.field_name"
+    }
+  },
+  "helper_functions": {
+    "normalizePhone": {
+      "purpose": "Convert phone to multiple formats",
+      "outputs": ["raw", "normalized", "national", "international"],
+      "logic": "strip non-digits, format as (XXX) XXX-XXXX and +1XXXXXXXXXX"
+    },
+    "parseName": {
+      "purpose": "Parse full name into components",
+      "outputs": ["full", "first", "middle", "last", "suffix"],
+      "logic": "title case conversion, suffix detection, name component extraction"
+    },
+    "parseDateTime": {
+      "purpose": "Parse and convert timestamps",
+      "outputs": ["iso", "display", "utc", "dayOfWeek"],
+      "timezone_handling": "America/Chicago default with UTC conversion"
+    }
+  },
+  "api_integrations": {
+    "airtable": {
+      "authentication": "httpHeaderAuth",
+      "endpoints": {
+        "search_contact": "GET /v0/{baseId}/{tableId}?filterByFormula=...",
+        "upsert_contact": "PATCH/POST /v0/{baseId}/{tableId}/{recordId?}",
+        "create_interaction": "POST /v0/{baseId}/{tableId}"
+      }
+    },
+    "clickup": {
+      "authentication": "clickUpOAuth2Api",
+      "endpoints": {
+        "create_task": "POST /api/v2/list/{listId}/task",
+        "update_task": "PUT /api/v2/task/{taskId}",
+        "relationship_management": "custom_fields array with relationship IDs"
+      }
+    }
+  },
+  "quality_improvements_identified": [
+    "Add international phone number validation with libphonenumber.js",
+    "Replace manual timezone handling with Intl.DateTimeFormat",
+    "Store UTM parameters as JSONB instead of flat fields",
+    "Add exponential backoff for API retries",
+    "Implement lead scoring algorithm",
+    "Add behavioral analysis capabilities",
+    "Include data enrichment from external sources"
+  ],
+  "conversion_to_mcp": {
+    "tools_created": [
+      "normalize_webhook_data",
+      "score_lead_quality", 
+      "deduplicate_contact",
+      "track_interaction",
+      "enrich_contact_data",
+      "generate_lead_report"
+    ],
+    "database_schema": "SQLite with leads, interactions, scoring_history tables",
+    "ai_enhancements": "DeepSeek integration for behavioral analysis, DuckDB for advanced analytics"
+  }
+}
