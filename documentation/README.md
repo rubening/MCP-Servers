@@ -199,4 +199,8 @@ Claude Tools/
 **Achievement**: Revolutionary 11-server ecosystem  
 **Impact**: Top 0.1% of AI automation users globally
 
+## Session Logs
+
+- Session summaries live in `documentation/sessions/` and use ISO UTC filenames without colons for Windows compatibility, for example: `2025-09-08T001319Z_session-summary.md`.
+
 *This system represents a complete transformation from coding newbie to AI automation expert, achieving unprecedented personal productivity through systematic AI tool integration.*
