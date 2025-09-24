@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS lead_interactions (
     utm_medium VARCHAR,
     utm_campaign VARCHAR,
     utm_content VARCHAR,
-    utm_term VARCHAR,
+    utm_term VARCHAR,cla
     
     -- URLs
     landing_page_url VARCHAR,

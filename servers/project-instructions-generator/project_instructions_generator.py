@@ -1,19 +1,19 @@
 #!/usr/bin/env python3
 """
-Project Instructions Generator MCP Server - INSTRUCTION EVOLUTION SYSTEM
-Automatically generates project instructions that preserve Ruben's knowledge base and cognitive optimization
+Project Instructions Generator MCP Server - CLAUDE CODE CLI EDITION
+Automatically generates CLAUDE.md files and repository instructions for Claude Code CLI environment
 
-This MCP server provides 6 tools for complete project instruction evolution:
+This MCP server provides 6 tools for Claude Code CLI project management:
 1. generate_project_instructions - Generate customized project instructions for any topic
-2. generate_claude_desktop_sync - Generate Claude Desktop sync instructions for knowledge continuity
+2. generate_claude_md_instructions - Generate/update CLAUDE.md files for repositories
 3. read_knowledge_summary - Read and summarize current knowledge base for project context
-4. analyze_project_instructions - Analyze existing instructions for improvement opportunities
-5. upgrade_project_instructions - Intelligently merge new capabilities into existing instructions
-6. generate_claude_desktop_update_strategy - Generate deployment assistance with change highlights
+4. analyze_repository_context - Understand current repository structure and development needs
+5. generate_development_commands - Create CLI commands for common development tasks
+6. update_project_status - Update repository status and development progress
 
 Author: Claude AI Assistant
 Created: June 12, 2025
-Enhanced: June 18, 2025 - Complete instruction evolution system
+Adapted for Claude Code CLI: September 9, 2025
 """
 
 import json
@@ -25,9 +25,10 @@ from pathlib import Path
 
 class ProjectInstructionsGenerator:
     def __init__(self):
-        self.name = "project-instructions-generator"
-        self.version = "2.1.0"
+        self.name = "project-instructions-generator-cli"
+        self.version = "3.0.0"
         self.base_path = Path("C:/Users/ruben/Claude Tools")
+        self.current_repo = Path.cwd()  # Current repository path for CLI context
         
     def read_knowledge_files(self):
         """Read the core knowledge files for context"""
@@ -50,12 +51,13 @@ class ProjectInstructionsGenerator:
     def extract_core_elements(self, knowledge_content):
         """Extract reusable core elements from knowledge base"""
         core_elements = {
-            'startup_protocol': """## ESSENTIAL SESSION STARTUP PROTOCOL
+            'startup_protocol': """## ESSENTIAL CLAUDE CODE STARTUP PROTOCOL
 - **ALWAYS check persistent memory** by reading `C:\\Users\\ruben\\Claude Tools\\PROJECT_KNOWLEDGE.md` for current project status
 - **ALWAYS read personal insights** from `C:\\Users\\ruben\\Claude Tools\\RUBEN_INSIGHTS.md` to understand Ruben's patterns and preferences  
 - **ALWAYS read cognitive profile** from `C:\\Users\\ruben\\Claude Tools\\RUBEN_COGNITIVE_PROFILE.md` for optimal collaboration approach
-- **ALWAYS take action directly** instead of asking Ruben to do manual tasks - you have MCP tools for everything, use them confidently
-- **Auto-update memory files** when conversation approaches 80% context usage to maintain continuity""",
+- **ALWAYS take action directly** using Claude Code CLI tools instead of asking manual tasks
+- **Repository-aware operations** - Understand current working directory and git context
+- **Auto-update memory files** when making significant progress to maintain continuity""",
             
             'technical_background': """## Ruben's Technical Background (Critical Context)
 Complete newbie to:
@@ -72,7 +74,8 @@ Complete newbie to:
 - **Python Command:** Use `py` NOT `python` (prevents "Python was not found" errors)
 - **Package Management:** Use `py -m pip` NOT `pip` (pip command not in PATH by default)
 - **File Paths:** Use backslashes `\\` for Windows paths
-- **User Directory:** `C:\\Users\\ruben`""",
+- **User Directory:** `C:\\Users\\ruben`
+- **Claude Code CLI:** Integrated bash/PowerShell execution with proper Windows support""",
             
             'cognitive_profile': """## Ruben's Cognitive Profile & Collaboration Approach
 
@@ -90,19 +93,26 @@ Complete newbie to:
 - **Enable Se action** - Focus on immediate, tangible results and hands-on implementation
 - **Systematic verification** - Compensate for Si weakness with external checking and monitoring""",
             
-            'available_tools': """## Available MCP Tools & AI Systems
+            'available_tools': """## Available Claude Code CLI Tools & Capabilities
 
-### Fully Functional MCP Servers
-1. **Filesystem MCP Server** - Complete file operations (11 tools)
-2. **Execute Command MCP Server** - Secure shell command execution
-3. **Git MCP Server** - Version control operations with security
-4. **YouTube MCP Server** - YouTube processing with robust fallbacks
+### Claude Code CLI Environment
+- **Repository Awareness** - Understands current working directory and git context
+- **File Operations** - Direct file reading, writing, and editing capabilities
+- **Command Execution** - Integrated bash/PowerShell command execution
+- **Search & Analysis** - Powerful grep, glob, and codebase analysis tools
+- **Multi-tool Coordination** - Batch operations across multiple tools
 
-### Advanced AI Tools
-- **Enhanced Mermaid Generator** - Real-time web intelligence + visual generation
-- **Business Engine Mapper** - AI automation of proven business methodologies
-- **YouTube Checklist Converter** - Complete workflow replacement system
-- **Project Instructions Generator** - This tool for maintaining knowledge continuity"""
+### MCP Servers (CLI Integration)
+1. **Filesystem Operations** - File management with CLI integration
+2. **Git Operations** - Version control with CLI workflows
+3. **Command Execution** - Shell command execution with proper Windows support
+4. **Project Instructions Generator CLI** - This tool for CLAUDE.md management
+
+### Development Workflow Support
+- **CLAUDE.md Management** - Repository-specific instruction files
+- **Development Commands** - Automated CLI command generation
+- **Repository Analysis** - Codebase structure and context understanding
+- **Progress Tracking** - Development status and milestone management"""
         }
         
         return core_elements
@@ -118,7 +128,7 @@ Complete newbie to:
         current_date = datetime.now().strftime("%B %d, %Y")
         
         # Create project-specific content
-        project_instructions = f"""# {project_topic} Project Instructions
+        project_instructions = f"""# {project_topic} Project Instructions - Claude Code CLI
 
 {core_elements['startup_protocol']}
 
@@ -139,14 +149,14 @@ Complete newbie to:
 ## Project-Specific Guidelines
 
 ### Context for {project_topic}
-- **Focus on hands-on implementation** - Ruben learns best by doing
-- **Provide immediate results** - Show progress quickly to maintain motivation
+- **Focus on hands-on implementation** - Ruben learns best by doing with Claude Code CLI tools
+- **Provide immediate results** - Show progress quickly using direct file operations
 - **Explain the "why"** - Satisfy Ti seeking with logical reasoning
 - **Build systematically** - Leverage Se action orientation with proper Te structure
-- **Document discoveries** - Add project-specific learnings to knowledge base
+- **Document discoveries** - Add project-specific learnings to knowledge base using Write tool
 
 ### Technical Approach for {project_topic}
-- **Use available MCP tools actively** - Take direct action instead of asking manual tasks
+- **Use Claude Code CLI tools actively** - Take direct action with Read, Edit, Write, Bash tools
 - **Leverage proven patterns** - Apply successful methodologies from previous projects
 - **Enable rapid experimentation** - Support Se-driven exploration with proper safety nets
 - **Maintain code quality** - Respect Fi personal values and authenticity even when trading efficiency
@@ -156,27 +166,27 @@ Complete newbie to:
 ## Next Steps & Implementation Strategy
 
 ### Phase 1: Foundation Setup
-1. **Create project directory structure** using filesystem MCP tools
-2. **Initialize version control** with Git MCP for project safety
-3. **Document initial requirements** and success criteria
-4. **Set up testing framework** for validation
+1. **Create/update CLAUDE.md** using this tool's claude_md_instructions capability
+2. **Analyze repository structure** with repository context analysis
+3. **Set up development commands** for common workflow tasks
+4. **Initialize proper git workflow** integration
 
 ### Phase 2: Core Implementation
 1. **Build minimal viable functionality** to demonstrate progress
 2. **Apply proven development patterns** from existing projects
-3. **Test systematically** with verification at each step
-4. **Document discoveries** and add to knowledge base
+3. **Test systematically** with verification at each step using CLI tools
+4. **Document discoveries** and add to knowledge base with automated updates
 
 ### Phase 3: Enhancement & Integration
-1. **Apply enhanced AI patterns** where beneficial
-2. **Integrate with existing tools** for maximum ecosystem value
-3. **Create comprehensive documentation** for future reference
-4. **Plan scaling strategies** for advanced features
+1. **Optimize Claude Code CLI workflows** for maximum efficiency
+2. **Integrate with existing tool ecosystem** for maximum value
+3. **Create comprehensive documentation** including repository-specific CLAUDE.md
+4. **Plan scaling strategies** for advanced features and automation
 
 ---
 
 *Generated: {current_date}*
-*This project maintains full integration with Ruben's established knowledge base, cognitive optimization, and proven development patterns while focusing specifically on {project_topic} objectives.*"""
+*This project maintains full integration with Ruben's established knowledge base, cognitive optimization, and proven development patterns while focusing specifically on {project_topic} objectives using Claude Code CLI.*"""
         
         return project_instructions
     
@@ -188,7 +198,7 @@ Complete newbie to:
 
 PROJECT KNOWLEDGE STATUS:
 - File accessible: {'YES' if not knowledge_content['project_knowledge'].startswith('Error reading') else 'NO'}
-- Current capabilities: 5 MCP servers, advanced AI tools, expert-level ecosystem
+- Current capabilities: MCP servers, Claude Code CLI integration, expert-level ecosystem
 
 RUBEN INSIGHTS STATUS:  
 - File accessible: {'YES' if not knowledge_content['ruben_insights'].startswith('Error reading') else 'NO'}
@@ -198,113 +208,546 @@ COGNITIVE PROFILE STATUS:
 - File accessible: {'YES' if not knowledge_content['cognitive_profile'].startswith('Error reading') else 'NO'}  
 - Type: ENFJ with detailed slot analysis for optimal collaboration
 
-READY FOR PROJECT GENERATION: {'YES - All knowledge files accessible' if all(not content.startswith('Error reading') for content in knowledge_content.values()) else 'NO - Some files inaccessible'}"""
+READY FOR CLAUDE CODE CLI PROJECT GENERATION: {'YES - All knowledge files accessible' if all(not content.startswith('Error reading') for content in knowledge_content.values()) else 'NO - Some files inaccessible'}"""
         
         return summary
     
-    def analyze_project_instructions(self, instruction_content):
-        """Analyze existing project instructions for improvement opportunities"""
+    def analyze_repository_context(self, repository_path=None):
+        """Understand current repository structure and development needs"""
         
-        # Read current knowledge base for comparison
-        knowledge_content = self.read_knowledge_files()
-        
-        analysis_categories = {
-            'missing_elements': [],
-            'outdated_elements': [],
-            'improvement_opportunities': [],
-            'optimization_suggestions': []
-        }
-        
-        # Check for essential elements that should be present
-        essential_elements = [
-            "Windows 11 Desktop PC",
-            "py command (NOT python)",
-            "5 MCP servers",
-            "Te 8th slot",
-            "Ti 4th slot",
-            "Se 3rd slot", 
-            "Si blindspot",
-            "External Te organization",
-            "Direct action using MCP tools",
-            "Explain reasoning",
-            "Hands-on implementation",
-            "Step-by-step verification"
-        ]
-        
-        for element in essential_elements:
-            if element not in instruction_content:
-                analysis_categories['missing_elements'].append(f"Missing: {element}")
-        
-        # Check for outdated patterns
-        outdated_patterns = [
-            ("Windows 11 Laptop", "Should be Windows 11 Desktop PC"),
-            ("python command", "Should specify 'py' NOT 'python'"),
-            ("4 MCP servers", "Should be 5 MCP servers"), 
-            ("manual tasks", "Should emphasize direct MCP tool usage"),
-            ("validation for its own sake", "Should emphasize direct honest feedback")
-        ]
-        
-        for old_pattern, suggestion in outdated_patterns:
-            if old_pattern in instruction_content:
-                analysis_categories['outdated_elements'].append(f"Outdated: {old_pattern} - {suggestion}")
-        
-        # Improvement opportunities based on latest knowledge
-        if "Sequential Thinking" not in instruction_content:
-            analysis_categories['improvement_opportunities'].append("Add Sequential Thinking tool for complex problem solving")
-        
-        if "Fe interface feedback" not in instruction_content:
-            analysis_categories['improvement_opportunities'].append("Add Fe interface feedback protocol")
+        if repository_path is None:
+            repository_path = self.current_repo
+        else:
+            repository_path = Path(repository_path)
             
-        if "Context monitoring protocol" not in instruction_content:
-            analysis_categories['improvement_opportunities'].append("Add context monitoring for session transitions")
-            
-        # Optimization suggestions
-        analysis_categories['optimization_suggestions'].extend([
-            "Ensure cognitive function optimization is explicit",
-            "Verify all MCP servers are listed with current capabilities",
-            "Include Windows-specific command guidance",
-            "Emphasize systematic verification steps",
-            "Add knowledge base update protocols"
-        ])
-        
-        # Generate analysis report
         current_date = datetime.now().strftime("%B %d, %Y")
         
-        analysis_report = f"""PROJECT INSTRUCTIONS ANALYSIS REPORT ({current_date})
+        analysis = f"""REPOSITORY CONTEXT ANALYSIS ({current_date})
 
-## Missing Essential Elements ({len(analysis_categories['missing_elements'])} found)
-{chr(10).join(analysis_categories['missing_elements']) if analysis_categories['missing_elements'] else "âœ… All essential elements present"}
+## Repository Information
+- **Path:** {repository_path}
+- **Name:** {repository_path.name}
+- **Analysis Date:** {current_date}
 
-## Outdated Elements ({len(analysis_categories['outdated_elements'])} found)  
-{chr(10).join(analysis_categories['outdated_elements']) if analysis_categories['outdated_elements'] else "âœ… No outdated elements detected"}
+## Repository Structure Analysis
 
-## Improvement Opportunities ({len(analysis_categories['improvement_opportunities'])} found)
-{chr(10).join(analysis_categories['improvement_opportunities']) if analysis_categories['improvement_opportunities'] else "âœ… Instructions appear current with latest capabilities"}
-
-## Optimization Suggestions
-{chr(10).join(analysis_categories['optimization_suggestions'])}
-
-## Strategic Recommendations
-
-### High Priority Updates
-{chr(10).join(analysis_categories['missing_elements'][:3]) if analysis_categories['missing_elements'] else "No critical updates needed"}
-
-### Modernization Needed
-{chr(10).join(analysis_categories['outdated_elements'][:3]) if analysis_categories['outdated_elements'] else "Instructions appear modern"}
-
-### Enhancement Opportunities  
-{chr(10).join(analysis_categories['improvement_opportunities'][:3]) if analysis_categories['improvement_opportunities'] else "Consider adding latest AI tools integration"}
-
-## Implementation Priority
-1. **CRITICAL:** Address missing essential elements first
-2. **HIGH:** Update outdated patterns for accuracy
-3. **MEDIUM:** Implement improvement opportunities
-4. **LOW:** Apply optimization suggestions
-
-This analysis enables systematic improvement of project instructions based on current knowledge base and proven collaboration patterns."""
+### Key Directories Found
+"""
         
-        return analysis_report
+        try:
+            # Analyze common directory structures
+            key_dirs = []
+            common_dirs = ['src', 'servers', 'scripts', 'configs', 'documentation', 'tests', 'core-infrastructure', 
+                          'external-services', 'analytics-intelligence', 'ai-reasoning', 'business-tools', 'experimental']
+            
+            for dir_name in common_dirs:
+                dir_path = repository_path / dir_name
+                if dir_path.exists():
+                    file_count = len(list(dir_path.glob('*')))
+                    key_dirs.append(f"- **{dir_name}/**: {file_count} items")
+            
+            if key_dirs:
+                analysis += "\n".join(key_dirs)
+            else:
+                analysis += "- Standard project structure detected"
+                
+            # Check for key files
+            analysis += "\n\n### Key Configuration Files\n"
+            config_files = ['CLAUDE.md', 'README.md', 'package.json', 'requirements.txt', 'setup.py', 
+                          'pyproject.toml', '.gitignore', 'claude_desktop_config.json']
+            
+            found_configs = []
+            for config_file in config_files:
+                if (repository_path / config_file).exists():
+                    found_configs.append(f"- ✅ {config_file}")
+                else:
+                    found_configs.append(f"- ❌ {config_file}")
+            
+            analysis += "\n".join(found_configs)
+            
+            # Development context recommendations
+            analysis += f"""
+
+## Development Context Recommendations
+
+### CLAUDE.md File Status
+{'✅ EXISTS - Repository has Claude Code CLI instructions' if (repository_path / 'CLAUDE.md').exists() else '❌ MISSING - Should create CLAUDE.md for Claude Code CLI integration'}
+
+### Repository Type Assessment
+"""
+            
+            # Determine repository type based on structure
+            if (repository_path / 'servers').exists():
+                analysis += "- **Type:** MCP Server Repository\n- **Focus:** Model Context Protocol server development\n- **CLI Needs:** Server testing, configuration generation, development workflows"
+            elif (repository_path / 'src').exists():
+                analysis += "- **Type:** Standard Software Project\n- **Focus:** Application development\n- **CLI Needs:** Build automation, testing, deployment workflows"
+            elif (repository_path / 'package.json').exists():
+                analysis += "- **Type:** Node.js Project\n- **Focus:** JavaScript/TypeScript development\n- **CLI Needs:** npm scripts, build processes, testing frameworks"
+            elif (repository_path / 'requirements.txt').exists() or (repository_path / 'pyproject.toml').exists():
+                analysis += "- **Type:** Python Project\n- **Focus:** Python application or library development\n- **CLI Needs:** pip management, pytest execution, virtual environment setup"
+            else:
+                analysis += "- **Type:** General Purpose Repository\n- **Focus:** Mixed or documentation-focused project\n- **CLI Needs:** Basic file operations, git workflows, documentation management"
+                
+            analysis += f"""
+
+### Recommended Claude Code CLI Integration
+
+#### High Priority
+- Create/update CLAUDE.md with repository-specific instructions
+- Set up development command shortcuts for common tasks
+- Configure repository-aware file operations
+- Establish git workflow integration
+
+#### Medium Priority  
+- Create automated testing commands
+- Set up build and deployment automation
+- Configure code quality and linting workflows
+- Establish documentation generation processes
+
+#### Low Priority
+- Advanced analysis and reporting tools
+- Integration with external services
+- Custom workflow optimizations
+- Performance monitoring and profiling
+
+---
+*Repository Analysis Generated: {current_date}*
+*Path: {repository_path}*
+*Ready for Claude Code CLI optimization*"""
+            
+        except Exception as e:
+            analysis += f"\n\n⚠️ Error analyzing repository structure: {e}"
+            
+        return analysis
     
+    def generate_claude_md_instructions(self, repository_path=None, project_focus="general", include_development_commands=True):
+        """Generate/update CLAUDE.md files for repositories with Claude Code CLI integration"""
+        
+        if repository_path is None:
+            repository_path = self.current_repo
+        else:
+            repository_path = Path(repository_path)
+            
+        # Read current knowledge base for core elements
+        knowledge_content = self.read_knowledge_files()
+        core_elements = self.extract_core_elements(knowledge_content)
+        
+        current_date = datetime.now().strftime("%B %d, %Y")
+        repo_name = repository_path.name
+        
+        # Generate repository-specific CLAUDE.md content
+        claude_md = f"""# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Repository Overview
+
+**Repository:** {repo_name}  
+**Focus:** {project_focus.title()} development and management  
+**Environment:** Windows 11 Desktop PC with Claude Code CLI  
+**Updated:** {current_date}
+
+{core_elements['startup_protocol']}
+
+{core_elements['technical_background']}
+
+{core_elements['windows_environment']}
+
+{core_elements['cognitive_profile']}
+
+## Repository-Specific Context
+
+### Development Environment
+- **Primary Path:** `{repository_path}`
+- **Repository Type:** {project_focus.title()} project
+- **CLI Integration:** Full Claude Code CLI support
+- **File Operations:** Direct read/write/edit capabilities
+
+### Key Development Workflows
+"""
+        
+        # Add development commands if requested
+        if include_development_commands:
+            if project_focus.lower() == "mcp server":
+                claude_md += """- **Server Testing:** `py [server_name].py` to test MCP servers
+- **Configuration Generation:** `py scripts/generate_config.py` for Claude Desktop configs
+- **Dependency Management:** `py -m pip install -r requirements.txt`
+- **Repository Analysis:** Use Grep and Glob tools for codebase exploration"""
+            elif project_focus.lower() == "python":
+                claude_md += """- **Script Execution:** `py script_name.py` (never use `python`)
+- **Package Installation:** `py -m pip install package_name`
+- **Testing:** `py -m pytest` for test execution
+- **Virtual Environment:** `py -m venv venv` for isolation"""
+            elif project_focus.lower() == "node.js":
+                claude_md += """- **Package Management:** `npm install` for dependencies
+- **Script Execution:** `npm run [script_name]` for package.json scripts
+- **Development Server:** `npm start` or `npm run dev`
+- **Testing:** `npm test` for test suites"""
+            else:
+                claude_md += """- **File Operations:** Use Read, Edit, Write tools for file management
+- **Search Operations:** Use Grep for content search, Glob for file patterns
+- **Command Execution:** Use Bash tool for shell commands
+- **Git Operations:** Integrated git workflow support"""
+        
+        claude_md += f"""
+
+### Claude Code CLI Optimization
+
+#### File Management
+- **Reading Files:** Use Read tool for examining code and configurations
+- **Editing Files:** Use Edit or MultiEdit for code modifications  
+- **Writing Files:** Use Write tool only when creating new files is essential
+- **Search Operations:** Use Grep for content search, Glob for file patterns
+
+#### Development Commands
+- **Command Execution:** Use Bash tool with proper Windows PowerShell syntax
+- **Path Handling:** Use absolute paths, quote paths with spaces
+- **Error Handling:** Include timeout and error checking for commands
+- **Background Tasks:** Use run_in_background for long-running processes
+
+#### Repository Integration
+- **Git Operations:** Leverage git integration for version control
+- **Multi-file Operations:** Batch operations when possible for efficiency
+- **Context Awareness:** Understand current working directory and file structure
+- **Progress Tracking:** Use TodoWrite for complex multi-step tasks
+
+{core_elements['available_tools']}
+
+## Best Practices for This Repository
+
+### Code Quality
+- **Systematic Approach:** Follow Te organization with clear step-by-step processes
+- **Immediate Action:** Enable Se action orientation with hands-on implementation
+- **Logical Explanation:** Satisfy Ti seeking by explaining the "why" behind decisions
+- **Value Alignment:** Respect Fi personal values and code authenticity
+
+### Development Workflow
+- **Direct Execution:** Use Claude Code CLI tools instead of asking for manual tasks
+- **Batch Operations:** Coordinate multiple tools efficiently
+- **Error Recovery:** Implement proper error handling and recovery procedures
+- **Documentation:** Maintain clear documentation for future reference
+
+### Windows Environment Specifics
+- **PowerShell Priority:** Prefer PowerShell over Command Prompt
+- **Python Command:** Always use `py` instead of `python` to avoid path issues
+- **File Paths:** Use backslashes for Windows paths, quote spaces
+- **Package Management:** Use `py -m pip` for reliable package installation
+
+## Repository Status and Goals
+
+### Current Status
+- Repository initialized for Claude Code CLI integration
+- Development environment configured for Windows 11 Desktop PC
+- Core cognitive optimization patterns implemented
+
+### Development Goals
+- Maintain systematic development workflow
+- Enable immediate hands-on results
+- Provide clear logical reasoning for all decisions
+- Respect personal development values and preferences
+
+### Success Metrics
+- Efficient Claude Code CLI integration
+- Streamlined development workflows
+- High-quality code with proper documentation
+- Optimal collaboration patterns maintained
+
+---
+
+*Generated: {current_date} for Claude Code CLI*  
+*Repository: {repo_name}*  
+*Focus: {project_focus.title()} Development*"""
+        
+        return {
+            "content": claude_md,
+            "repository": str(repository_path),
+            "focus": project_focus,
+            "generated_date": current_date
+        }
+    
+    def generate_development_commands(self, repository_path=None, project_type="general"):
+        """Generate CLI commands for common development tasks"""
+        
+        if repository_path is None:
+            repository_path = self.current_repo
+        else:
+            repository_path = Path(repository_path)
+            
+        current_date = datetime.now().strftime("%B %d, %Y")
+        
+        commands = f"""DEVELOPMENT COMMANDS FOR {repository_path.name.upper()} ({current_date})
+
+## Repository Navigation
+```powershell
+# Navigate to repository
+cd "{repository_path}"
+
+# List repository contents
+ls
+
+# Check git status
+git status
+```
+
+## Common Development Tasks
+"""
+        
+        if project_type.lower() == "mcp server":
+            commands += """### MCP Server Development
+```powershell
+# Test individual MCP server
+py server_name.py
+
+# Generate Claude Desktop configuration
+py scripts/generate_config.py
+
+# Install Python dependencies
+py -m pip install -r requirements.txt
+
+# Run server tests (if available)
+py test_server.py
+```
+
+### MCP Server Testing
+```powershell
+# Test server initialization
+echo '{"jsonrpc":"2.0","method":"initialize","id":1,"params":{}}' | py server_name.py
+
+# List available tools
+echo '{"jsonrpc":"2.0","method":"tools/list","id":2}' | py server_name.py
+```"""
+        elif project_type.lower() == "python":
+            commands += """### Python Development
+```powershell
+# Create virtual environment
+py -m venv venv
+
+# Activate virtual environment
+.\\venv\\Scripts\\Activate.ps1
+
+# Install dependencies
+py -m pip install -r requirements.txt
+
+# Run Python scripts
+py script_name.py
+
+# Run tests
+py -m pytest
+
+# Install package in development mode
+py -m pip install -e .
+```"""
+        elif project_type.lower() == "node.js":
+            commands += """### Node.js Development
+```powershell
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+
+# Run production build
+npm run build
+
+# Run tests
+npm test
+
+# Start application
+npm start
+```"""
+        else:
+            commands += """### General Development
+```powershell
+# File operations
+ls                          # List files
+Get-Content file.txt        # Read file contents
+Set-Content -Path file.txt -Value "content"  # Write to file
+
+# Directory operations
+mkdir new_directory         # Create directory
+cd new_directory           # Change directory
+rmdir empty_directory      # Remove empty directory
+```"""
+            
+        commands += f"""
+
+## Git Workflow Commands
+```powershell
+# Check repository status
+git status
+
+# Stage changes
+git add .
+git add specific_file.py
+
+# Commit changes
+git commit -m "Descriptive commit message"
+
+# Push to remote
+git push origin main
+
+# Pull latest changes
+git pull origin main
+
+# Create new branch
+git checkout -b feature-branch-name
+
+# Switch branches
+git checkout main
+git checkout feature-branch-name
+```
+
+## Claude Code CLI Integration
+```powershell
+# The following operations are handled by Claude Code CLI tools:
+# - File reading: Use Read tool
+# - File editing: Use Edit/MultiEdit tools
+# - File writing: Use Write tool (only when necessary)
+# - Search operations: Use Grep and Glob tools
+# - Command execution: Use Bash tool
+# - Git operations: Integrated git support
+```
+
+## Repository-Specific Shortcuts
+
+### Quick Setup
+```powershell
+# Full repository setup from scratch
+cd "{repository_path}"
+git status
+# (Add project-specific setup commands here)
+```
+
+### Development Workflow
+```powershell
+# Daily development workflow
+cd "{repository_path}"
+git pull origin main
+# (Add project-specific development commands here)
+git add .
+git commit -m "Your commit message"
+git push origin main
+```
+
+### Testing and Validation
+```powershell
+# Run all tests and validation
+cd "{repository_path}"
+# (Add project-specific testing commands here)
+```
+
+## Notes for Windows 11 Desktop PC
+- **Always use `py` instead of `python`** to avoid "Python was not found" errors
+- **Use PowerShell** as the preferred terminal environment
+- **Quote paths with spaces** using double quotes
+- **Use backslashes** for Windows file paths
+- **Prefer `py -m pip`** over just `pip` for package management
+
+---
+*Generated: {current_date}*  
+*Repository: {repository_path.name}*  
+*Type: {project_type.title()}*  
+*Environment: Windows 11 Desktop PC with Claude Code CLI*"""
+        
+        return commands
+    
+    def update_project_status(self, repository_path=None, status_update="", milestone="", next_steps=None):
+        """Update repository status and development progress"""
+        
+        if repository_path is None:
+            repository_path = self.current_repo
+        else:
+            repository_path = Path(repository_path)
+            
+        current_date = datetime.now().strftime("%B %d, %Y at %I:%M %p")
+        
+        if next_steps is None:
+            next_steps = []
+        elif isinstance(next_steps, str):
+            next_steps = [next_steps]
+            
+        status_report = f"""PROJECT STATUS UPDATE - {repository_path.name.upper()}
+
+## Status Update ({current_date})
+
+### Current Status
+{status_update if status_update else "Status update pending..."}
+
+### Milestone Achievement
+{milestone if milestone else "No specific milestone noted"}
+
+### Repository Information
+- **Path:** {repository_path}
+- **Last Updated:** {current_date}
+- **Claude Code CLI Integration:** Active
+
+### Progress Summary
+
+#### Completed
+- Repository initialized for Claude Code CLI
+- Core development environment configured
+- CLAUDE.md instructions established
+- Windows 11 Desktop PC optimization applied
+
+#### In Progress
+{status_update if status_update else "Current development activities..."}
+
+#### Next Steps
+"""
+        
+        if next_steps:
+            for i, step in enumerate(next_steps, 1):
+                status_report += f"{i}. {step}\n"
+        else:
+            status_report += "- Review current implementation\n- Plan next development phase\n- Update documentation as needed\n"
+            
+        status_report += f"""
+
+### Development Environment Status
+- ✅ Claude Code CLI integration active
+- ✅ Windows 11 Desktop PC configuration optimized
+- ✅ Python environment configured (using `py` command)
+- ✅ PowerShell as primary terminal
+- ✅ Git workflow integration enabled
+- ✅ Cognitive optimization patterns applied
+
+### Key Metrics
+- **Repository Health:** {'Good' if status_update else 'Pending Assessment'}
+- **CLI Integration:** Fully Functional
+- **Development Workflow:** Optimized for Se action + Te structure
+- **Technical Environment:** Windows 11 Desktop PC Ready
+
+### Collaboration Optimization
+- **Te 8th slot support:** External organization and structure provided
+- **Se 3rd slot enablement:** Immediate action and hands-on results prioritized  
+- **Ti 4th slot satisfaction:** Logical reasoning and "why" explanations included
+- **Fi 5th slot respect:** Personal values and authenticity maintained
+- **Si blindspot compensation:** External monitoring and systematic verification
+
+## Action Items
+
+### Immediate (High Priority)
+- Continue current development focus
+- Maintain systematic verification processes
+- Document key discoveries and insights
+
+### Near-term (Medium Priority)
+- Enhance repository-specific workflows
+- Optimize Claude Code CLI integration
+- Expand development command automation
+
+### Long-term (Strategic)
+- Scale successful patterns to other repositories
+- Integrate advanced AI tools where beneficial
+- Establish comprehensive testing and validation frameworks
+
+---
+*Status Update Generated: {current_date}*  
+*Repository: {repository_path.name}*  
+*Environment: Claude Code CLI on Windows 11 Desktop PC*"""
+        
+        return status_report
+
     def upgrade_project_instructions(self, instruction_content, new_capabilities):
         """Intelligently merge new capabilities into existing project instructions"""
         
@@ -323,8 +766,8 @@ This analysis enables systematic improvement of project instructions based on cu
         
         # Add new capabilities to appropriate sections
         for capability in new_capabilities:
-            if any(keyword in capability.lower() for keyword in ['mcp', 'server', 'tool']):
-                upgrade_sections.append(f"## Enhanced MCP Tools & AI Systems\n\n{capability}")
+            if any(keyword in capability.lower() for keyword in ['claude code cli', 'cli', 'repository', 'tool']):
+                upgrade_sections.append(f"## Enhanced Claude Code CLI Integration\n\n{capability}")
             elif any(keyword in capability.lower() for keyword in ['cognitive', 'collaboration', 'communication']):
                 upgrade_sections.append(f"## Updated Collaboration Approach\n\n{capability}")
             elif any(keyword in capability.lower() for keyword in ['windows', 'environment', 'technical']):
@@ -333,7 +776,7 @@ This analysis enables systematic improvement of project instructions based on cu
                 upgrade_sections.append(f"## New Capability Integration\n\n{capability}")
         
         # Generate upgraded instructions
-        upgraded_instructions = f"""# UPGRADED PROJECT INSTRUCTIONS ({current_date})
+        upgraded_instructions = f"""# UPGRADED PROJECT INSTRUCTIONS - CLAUDE CODE CLI ({current_date})
 
 ## Capability Upgrades Applied
 {chr(10).join([f"- {cap}" for cap in new_capabilities])}
@@ -355,187 +798,25 @@ The following capabilities have been systematically integrated into the project 
 {core_elements['available_tools']}
 
 ## Upgrade Implementation Notes
-- **Systematic Integration:** New capabilities merged with existing framework
+- **Systematic Integration:** New capabilities merged with existing Claude Code CLI framework
 - **Knowledge Base Sync:** Updated to reflect current ecosystem status
 - **Cognitive Optimization:** Maintained all collaboration optimizations
 - **Technical Accuracy:** Verified compatibility with Windows 11 Desktop PC environment
+- **CLI Integration:** Enhanced repository-aware operations
 
 ## Validation Checklist
-âœ… New capabilities integrated into appropriate sections
-âœ… Cognitive function optimization preserved  
-âœ… Technical environment accuracy maintained
-âœ… MCP tool integration updated
-âœ… Collaboration patterns optimized
+✅ New capabilities integrated into appropriate sections
+✅ Cognitive function optimization preserved  
+✅ Technical environment accuracy maintained
+✅ Claude Code CLI integration updated
+✅ Collaboration patterns optimized
+✅ Repository-awareness maintained
 
 ---
 *Upgraded: {current_date}*
-*This upgrade maintains full compatibility with established knowledge base while incorporating new capabilities.*"""
+*This upgrade maintains full compatibility with established knowledge base while incorporating new capabilities for Claude Code CLI.*"""
 
         return upgraded_instructions
-    
-    def generate_claude_desktop_update_strategy(self, current_desktop_content, new_capabilities, deployment_priority="high"):
-        """Generate deployment assistance with change highlights for Claude Desktop updates"""
-        
-        # Analyze what needs updating
-        sync_result = self.generate_claude_desktop_sync(current_desktop_content, "Strategic capability update")
-        
-        # Generate change highlights
-        if isinstance(new_capabilities, str):
-            new_capabilities = [new_capabilities]
-            
-        current_date = datetime.now().strftime("%B %d, %Y")
-        
-        # Categorize changes by impact
-        high_impact_changes = []
-        medium_impact_changes = []
-        low_impact_changes = []
-        
-        for capability in new_capabilities:
-            if any(keyword in capability.lower() for keyword in ['mcp server', 'critical', 'essential', 'breakthrough']):
-                high_impact_changes.append(capability)
-            elif any(keyword in capability.lower() for keyword in ['tool', 'enhancement', 'optimization']):
-                medium_impact_changes.append(capability)
-            else:
-                low_impact_changes.append(capability)
-        
-        # Generate deployment strategy
-        deployment_strategy = f"""CLAUDE DESKTOP UPDATE STRATEGY ({current_date})
-
-## Deployment Priority: {deployment_priority.upper()}
-
-## Change Impact Analysis
-
-### HIGH IMPACT CHANGES ({len(high_impact_changes)} items)
-{chr(10).join([f"ðŸ”´ {change}" for change in high_impact_changes]) if high_impact_changes else "None"}
-
-### MEDIUM IMPACT CHANGES ({len(medium_impact_changes)} items)  
-{chr(10).join([f"ðŸŸ¡ {change}" for change in medium_impact_changes]) if medium_impact_changes else "None"}
-
-### LOW IMPACT CHANGES ({len(low_impact_changes)} items)
-{chr(10).join([f"ðŸŸ¢ {change}" for change in low_impact_changes]) if low_impact_changes else "None"}
-
-## Deployment Sequence
-
-### Phase 1: Critical Updates (Deploy First)
-{chr(10).join([f"1. {change}" for change in high_impact_changes[:3]]) if high_impact_changes else "No critical updates needed"}
-
-### Phase 2: Enhancement Updates  
-{chr(10).join([f"2. {change}" for change in medium_impact_changes[:3]]) if medium_impact_changes else "Standard enhancements"}
-
-### Phase 3: Optimization Updates
-{chr(10).join([f"3. {change}" for change in low_impact_changes[:3]]) if low_impact_changes else "Fine-tuning optimizations"}
-
-## Change Highlights for Claude Desktop
-
-### What's New
-- **Enhanced Capabilities:** {len(new_capabilities)} new capabilities integrated
-- **Updated Knowledge Base:** Reflects current {datetime.now().strftime('%B %Y')} ecosystem status
-- **Improved Collaboration:** Latest cognitive optimization patterns included
-
-### Key Updates to Communicate
-- **MCP Ecosystem:** Now includes {len(high_impact_changes + medium_impact_changes)} significant enhancements
-- **Technical Environment:** Updated for optimal Windows 11 Desktop PC performance  
-- **Collaboration Patterns:** Refined based on latest insights and proven methodologies
-
-## Deployment Checklist
-â–¡ Backup current Claude Desktop project knowledge
-â–¡ Deploy Phase 1 critical updates first
-â–¡ Verify functionality with test prompts
-â–¡ Deploy Phase 2 enhancements  
-â–¡ Deploy Phase 3 optimizations
-â–¡ Document deployment completion date
-â–¡ Update project instructions with deployment notes
-
-## Risk Mitigation
-- **Gradual Deployment:** Phased approach reduces integration risk
-- **Change Tracking:** All updates documented with rationale
-- **Rollback Plan:** Previous version preserved for emergency restore
-- **Validation Steps:** Testing at each phase ensures stability
-
-## Success Metrics
-- âœ… All new capabilities accessible in Claude Desktop
-- âœ… Collaboration patterns optimized for cognitive functions
-- âœ… Technical accuracy maintained for Windows environment
-- âœ… Knowledge base synchronization complete
-
-{sync_result['condensed_instructions']}
-
----
-*Deployment Strategy Generated: {current_date}*
-*Priority: {deployment_priority.title()} | Changes: {len(new_capabilities)} capabilities*"""
-
-        return deployment_strategy
-
-    def generate_claude_desktop_sync(self, current_desktop_content, sync_reason="Knowledge base synchronization update"):
-        """Generate condensed project instructions for Claude Desktop project knowledge synchronization"""
-        
-        # Read current knowledge base
-        knowledge_content = self.read_knowledge_files()
-        
-        # Generate condensed instructions
-        condensed = f"""# AI Tools Ecosystem Development
-
-## ESSENTIAL SESSION STARTUP PROTOCOL
-- **ALWAYS check persistent memory** by reading `C:\\Users\\ruben\\Claude Tools\\PROJECT_KNOWLEDGE.md` for current project status
-- **ALWAYS read personal insights** from `C:\\Users\\ruben\\Claude Tools\\RUBEN_INSIGHTS.md` to understand patterns and preferences  
-- **ALWAYS read cognitive profile** from `C:\\Users\\ruben\\Claude Tools\\RUBEN_COGNITIVE_PROFILE.md` for optimal collaboration approach
-- **ALWAYS take action directly** instead of asking Ruben to do manual tasks - you have MCP tools for everything, use them confidently
-- **CONTEXT MONITORING PROTOCOL** - Monitor conversation length and provide transition prompts when approaching limits
-
-## Technical Background & Environment
-Complete newbie to programming, MCP, web development. **Windows 11 Desktop PC** with PowerShell preferred. Use `py` NOT `python` for commands.
-
-## Cognitive Profile (ENFJ) - CRITICAL for Collaboration
-- **Te 8th slot (unconscious)** - MUST provide external organization and structure
-- **Se 3rd slot (valued)** - Enable immediate action, hands-on results
-- **Ti 4th slot (seeking)** - ALWAYS explain logical "why" behind decisions  
-- **Fi 5th slot** - Respect personal values and authenticity
-- **Si blindspot** - Monitor for stress, burnout, physical needs
-
-## Communication Requirements
-- **Direct honest feedback** - Never validate for its own sake, provide what's correct
-- **External Te organization** - Clear structure, step-by-step guidance, systematic approaches
-- **Explain reasoning** - Satisfy Ti seeking with logical explanations
-- **Enable Se action** - Focus on immediate, tangible results
-
-## Current Expert-Level Capabilities
-**5 Fully Functional MCP Servers:**
-1. **Filesystem MCP** - Complete file operations (11 tools)
-2. **Execute Command MCP** - Secure shell command execution
-3. **Git MCP** - Version control operations with security
-4. **YouTube MCP** - YouTube processing with robust fallbacks  
-5. **Project Instructions Generator MCP** - Revolutionary project continuity solution
-
-**Advanced AI Tools:**
-- **Enhanced Mermaid Generator** - Real-time web intelligence + visual generation
-- **Business Engine Mapper** - AI automation of proven business methodologies
-- **YouTube Checklist Converter** - Complete workflow replacement system
-
-## Project Goals - Expert Level
-- **Current Focus:** Web interface development for existing tools
-- **Strategic Target:** Empirically validated personality typing systems  
-- **Vision:** Advanced automation combining multiple AI systems
-
-## Critical Windows Commands
-- Navigate: `cd 'C:\\Users\\ruben\\Claude Tools'`
-- Python: `py script_name.py` (NOT `python`)
-- PowerShell: Windows + R then type 'powershell' then Enter
-
-## Learning Style & Approach
-Hands-on implementation, immediate results, systematic understanding of "why", building real useful tools, systems thinking.
-
----
-*Condensed from comprehensive knowledge base for Claude Desktop project knowledge area*"""
-        
-        sync_analysis = """## Synchronization Analysis
-
-This provides updated condensed instructions for Claude Desktop project knowledge synchronization to maintain consistency with the comprehensive knowledge base."""
-        
-        return {
-            "analysis": sync_analysis,
-            "condensed_instructions": condensed,
-            "sync_reason": sync_reason
-        }
 
     def save_project_instructions(self, content, project_topic):
         """Save generated instructions to a file"""
@@ -552,21 +833,21 @@ This provides updated condensed instructions for Claude Desktop project knowledg
         except Exception as e:
             return f"Error saving file: {e}"
 
-    def save_sync_instructions(self, content):
-        """Save synchronization instructions to a file"""
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        filename = f"claude_desktop_sync_{timestamp}.md"
-        filepath = self.base_path / "project_instructions" / filename
-        
-        # Create directory if it doesn't exist
-        filepath.parent.mkdir(exist_ok=True)
+    def save_claude_md(self, content, repository_path=None):
+        """Save CLAUDE.md file to repository"""
+        if repository_path is None:
+            repository_path = self.current_repo
+        else:
+            repository_path = Path(repository_path)
+            
+        filepath = repository_path / "CLAUDE.md"
         
         try:
             with open(filepath, 'w', encoding='utf-8', errors='ignore') as f:
                 f.write(content)
             return str(filepath)
         except Exception as e:
-            return f"Error saving sync file: {e}"
+            return f"Error saving CLAUDE.md: {e}"
 
 class MCPServer:
     def __init__(self):
@@ -599,7 +880,7 @@ class MCPServer:
                         "tools": [
                             {
                                 "name": "generate_project_instructions",
-                                "description": "Generate customized project instructions that preserve knowledge base and cognitive optimization",
+                                "description": "Generate customized project instructions that preserve knowledge base and cognitive optimization for Claude Code CLI",
                                 "inputSchema": {
                                     "type": "object",
                                     "properties": {
@@ -625,26 +906,32 @@ class MCPServer:
                                 }
                             },
                             {
-                                "name": "generate_claude_desktop_sync",
-                                "description": "Generate condensed project instructions for Claude Desktop project knowledge synchronization",
+                                "name": "generate_claude_md_instructions",
+                                "description": "Generate/update CLAUDE.md files for repositories with Claude Code CLI integration",
                                 "inputSchema": {
                                     "type": "object",
                                     "properties": {
-                                        "current_desktop_content": {
+                                        "repository_path": {
                                             "type": "string",
-                                            "description": "Current content in Claude Desktop project knowledge area"
+                                            "description": "Path to the repository (defaults to current working directory)"
                                         },
-                                        "sync_reason": {
+                                        "project_focus": {
                                             "type": "string",
-                                            "description": "Reason for synchronization (new capabilities, major updates, etc.)"
+                                            "description": "Primary focus of the project (e.g., 'MCP Server', 'Python', 'Node.js', 'General')",
+                                            "default": "general"
+                                        },
+                                        "include_development_commands": {
+                                            "type": "boolean",
+                                            "description": "Whether to include development command examples (default: true)",
+                                            "default": True
                                         },
                                         "save_file": {
                                             "type": "boolean",
-                                            "description": "Whether to save the sync instructions to a file (default: true)",
+                                            "description": "Whether to save CLAUDE.md to the repository (default: true)",
                                             "default": True
                                         }
                                     },
-                                    "required": ["current_desktop_content"]
+                                    "required": []
                                 }
                             },
                             {
@@ -657,60 +944,65 @@ class MCPServer:
                                 }
                             },
                             {
-                                "name": "analyze_project_instructions",
-                                "description": "Analyze existing project instructions for improvement opportunities",
+                                "name": "analyze_repository_context",
+                                "description": "Understand current repository structure and development needs",
                                 "inputSchema": {
                                     "type": "object",
                                     "properties": {
-                                        "instruction_content": {
+                                        "repository_path": {
                                             "type": "string",
-                                            "description": "Current project instruction content to analyze"
+                                            "description": "Path to the repository to analyze (defaults to current working directory)"
                                         }
                                     },
-                                    "required": ["instruction_content"]
+                                    "required": []
                                 }
                             },
                             {
-                                "name": "upgrade_project_instructions",
-                                "description": "Intelligently merge new capabilities into existing project instructions",
+                                "name": "generate_development_commands",
+                                "description": "Create CLI commands for common development tasks",
                                 "inputSchema": {
                                     "type": "object",
                                     "properties": {
-                                        "instruction_content": {
+                                        "repository_path": {
                                             "type": "string",
-                                            "description": "Current project instruction content to upgrade"
+                                            "description": "Path to the repository (defaults to current working directory)"
                                         },
-                                        "new_capabilities": {
-                                            "type": "array",
-                                            "items": {"type": "string"},
-                                            "description": "List of new capabilities to integrate"
+                                        "project_type": {
+                                            "type": "string",
+                                            "description": "Type of project for command optimization (e.g., 'MCP Server', 'Python', 'Node.js', 'General')",
+                                            "default": "general"
                                         }
                                     },
-                                    "required": ["instruction_content", "new_capabilities"]
+                                    "required": []
                                 }
                             },
                             {
-                                "name": "generate_claude_desktop_update_strategy",
-                                "description": "Generate deployment assistance with change highlights for Claude Desktop updates",
+                                "name": "update_project_status",
+                                "description": "Update repository status and development progress",
                                 "inputSchema": {
                                     "type": "object",
                                     "properties": {
-                                        "current_desktop_content": {
+                                        "repository_path": {
                                             "type": "string",
-                                            "description": "Current content in Claude Desktop project knowledge area"
+                                            "description": "Path to the repository (defaults to current working directory)"
                                         },
-                                        "new_capabilities": {
+                                        "status_update": {
+                                            "type": "string",
+                                            "description": "Current status description",
+                                            "default": ""
+                                        },
+                                        "milestone": {
+                                            "type": "string",
+                                            "description": "Milestone or achievement to document",
+                                            "default": ""
+                                        },
+                                        "next_steps": {
                                             "type": "array",
                                             "items": {"type": "string"},
-                                            "description": "List of new capabilities being added"
-                                        },
-                                        "deployment_priority": {
-                                            "type": "string",
-                                            "description": "Deployment priority level (high, medium, low)",
-                                            "default": "high"
+                                            "description": "List of next steps or action items"
                                         }
                                     },
-                                    "required": ["current_desktop_content", "new_capabilities"]
+                                    "required": []
                                 }
                             }
                         ]
@@ -756,33 +1048,20 @@ class MCPServer:
                         }
                     }
                 
-                elif tool_name == "generate_claude_desktop_sync":
-                    current_content = arguments.get("current_desktop_content")
-                    sync_reason = arguments.get("sync_reason", "Knowledge base synchronization update")
+                elif tool_name == "generate_claude_md_instructions":
+                    repository_path = arguments.get("repository_path")
+                    project_focus = arguments.get("project_focus", "general")
+                    include_development_commands = arguments.get("include_development_commands", True)
                     save_file = arguments.get("save_file", True)
                     
-                    # Generate sync analysis and recommendations
-                    sync_result = self.generator.generate_claude_desktop_sync(current_content, sync_reason)
+                    # Generate CLAUDE.md content
+                    result = self.generator.generate_claude_md_instructions(
+                        repository_path, project_focus, include_development_commands
+                    )
                     
-                    result = sync_result.copy()
-                    
-                    # Save to file if requested
+                    # Save to repository if requested
                     if save_file:
-                        sync_content = f"""# Claude Desktop Knowledge Synchronization
-
-## Sync Analysis
-{sync_result['analysis']}
-
-## Updated Condensed Instructions
-{sync_result['condensed_instructions']}
-
-## Sync Reason
-{sync_reason}
-
----
-*Generated: {datetime.now().strftime('%B %d, %Y at %I:%M %p')}*"""
-                        
-                        filepath = self.generator.save_sync_instructions(sync_content)
+                        filepath = self.generator.save_claude_md(result['content'], repository_path)
                         result["saved_to"] = filepath
                     
                     return {
@@ -792,8 +1071,8 @@ class MCPServer:
                             "content": [
                                 {
                                     "type": "text",
-                                    "text": f"Claude Desktop Synchronization Analysis\n\n{sync_result['analysis']}\n\nCondensed Instructions for Claude Desktop:\n\n{sync_result['condensed_instructions']}\n\n" + 
-                                           (f"Saved to: {result.get('saved_to')}" if save_file else "Analysis generated (not saved)")
+                                    "text": f"Generated CLAUDE.md for {result['repository']}\n\nProject Focus: {result['focus']}\nGenerated: {result['generated_date']}\n\n{result['content']}\n\n" + 
+                                           (f"Saved to: {result.get('saved_to')}" if save_file else "CLAUDE.md generated (not saved)")
                                 }
                             ]
                         }
@@ -815,10 +1094,10 @@ class MCPServer:
                         }
                     }
                 
-                elif tool_name == "analyze_project_instructions":
-                    instruction_content = arguments.get("instruction_content")
+                elif tool_name == "analyze_repository_context":
+                    repository_path = arguments.get("repository_path")
                     
-                    analysis = self.generator.analyze_project_instructions(instruction_content)
+                    analysis = self.generator.analyze_repository_context(repository_path)
                     
                     return {
                         "jsonrpc": "2.0",
@@ -833,11 +1112,11 @@ class MCPServer:
                         }
                     }
                 
-                elif tool_name == "upgrade_project_instructions":
-                    instruction_content = arguments.get("instruction_content")
-                    new_capabilities = arguments.get("new_capabilities")
+                elif tool_name == "generate_development_commands":
+                    repository_path = arguments.get("repository_path")
+                    project_type = arguments.get("project_type", "general")
                     
-                    upgraded = self.generator.upgrade_project_instructions(instruction_content, new_capabilities)
+                    commands = self.generator.generate_development_commands(repository_path, project_type)
                     
                     return {
                         "jsonrpc": "2.0",
@@ -846,19 +1125,20 @@ class MCPServer:
                             "content": [
                                 {
                                     "type": "text",
-                                    "text": upgraded
+                                    "text": commands
                                 }
                             ]
                         }
                     }
                 
-                elif tool_name == "generate_claude_desktop_update_strategy":
-                    current_desktop_content = arguments.get("current_desktop_content")
-                    new_capabilities = arguments.get("new_capabilities")
-                    deployment_priority = arguments.get("deployment_priority", "high")
+                elif tool_name == "update_project_status":
+                    repository_path = arguments.get("repository_path")
+                    status_update = arguments.get("status_update", "")
+                    milestone = arguments.get("milestone", "")
+                    next_steps = arguments.get("next_steps")
                     
-                    strategy = self.generator.generate_claude_desktop_update_strategy(
-                        current_desktop_content, new_capabilities, deployment_priority
+                    status_report = self.generator.update_project_status(
+                        repository_path, status_update, milestone, next_steps
                     )
                     
                     return {
@@ -868,7 +1148,7 @@ class MCPServer:
                             "content": [
                                 {
                                     "type": "text",
-                                    "text": strategy
+                                    "text": status_report
                                 }
                             ]
                         }

@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:www.jotform.com)",
+      "Bash(move project_instructions_generator.py project_instructions_generator_original.py)",
+      "Bash(move project_instructions_generator_cli.py project_instructions_generator.py)",
+      "Read(//c/Users/ruben/.claude/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
