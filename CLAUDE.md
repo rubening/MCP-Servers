@@ -16,6 +16,10 @@ Supporting directories:
 - `documentation/` - Knowledge base, runbooks, historical reports.
 - `data/` - Local database files, schemas, and helper utilities.
 
+## Context Sources
+- Read `CHANGELOG.md` first to understand recent shifts before editing code or configs.
+- Reference the changelog when summarizing work back to the user or other agents.
+
 ## Development Commands
 
 ### Python Servers
@@ -38,6 +42,12 @@ py scripts/generate_config.py
 ```
 
 (Generator already emits sanitized configs with env-driven paths; SuperClaude defaults will land during orchestration work.)
+
+## SuperClaude Notes
+- Orchestrator server: `servers/python/superclaude/superclaude_server.py`.
+- Review `documentation/SUPERCLAUDE_GUIDE.md` for personas and MCP combinations before planning workflows.
+- Config generator now exports SuperClaude env vars; confirm Claude Desktop loads them.
+- `_invoke_tool` is stubbed; replace with real MCP client logic when delegating.
 
 ## MCP Protocol Expectations
 
@@ -65,6 +75,7 @@ All servers respond to the JSON-RPC 2.0 trio (`initialize`, `tools/list`, `tools
 - Introduce smoke-test suites for every server and wire into CI.
 
 Stay consistent with these conventions to keep Claude Code productive during the transition.
+
 
 
 

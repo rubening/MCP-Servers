@@ -7,6 +7,17 @@
 - Shared assets and docs remain in `configs/`, `documentation/`, `data/`, and `scripts/`.
 - Each server owns a `README.md` (and optional `CLAUDE.md`) describing tools, dependencies, and environment variables.
 
+## Changelog Discipline
+- Record every meaningful repository change in `CHANGELOG.md` so downstream agents have an immediate context anchor.
+- Prefer the helper script: `py scripts/update_changelog.py --category Added --message "Short summary"` to append entries under the correct section.
+- Reference the latest changelog entry when handing off work or opening a PR.
+
+## SuperClaude Integration
+- Orchestrator lives in `servers/python/superclaude/`; see `README.md` there for tool descriptions.
+- Review `documentation/SUPERCLAUDE_DESIGN.md` and `documentation/SUPERCLAUDE_GUIDE.md` before editing planning/delegation logic.
+- Use `scripts/generate_config.py` to populate SuperClaude env vars (`SUPERCLAUDE_PLAN_DIR`, `SUPERCLAUDE_LOG_PATH`, etc.).
+- Align personas and MCP choices with the Super_Claude_Docs.md reference when crafting plans.
+
 ## Build, Test, and Development Commands
 - Python server example (DeepSeek):
   - `cd servers/python/deepseek`
@@ -41,4 +52,6 @@
 - Store API keys in env vars; keep templates in `configs/` and exclude local overrides from VCS.
 - When adding servers, document required env vars, start command, and `tools/list` output to simplify Claude Desktop integration.
 - Prefer configuration files or env overrides instead of hard-coded paths; the shared core module will centralize policy enforcement as refactor progresses.
+
+
 

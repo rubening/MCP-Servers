@@ -139,6 +139,16 @@ def build_config() -> Dict[str, object]:
                     )
                 },
             },
+            "superclaude": {
+                "command": "py",
+                "args": [str(python_servers / "superclaude" / "superclaude_server.py")],
+                "env": {
+                    "SUPERCLAUDE_PLAN_DIR": str(_path_env("SUPERCLAUDE_PLAN_DIR", repo_root / "documentation" / "superclaude_plans")),
+                    "SUPERCLAUDE_LOG_PATH": str(_path_env("SUPERCLAUDE_LOG_PATH", repo_root / "logs" / "superclaude_decisions.log")),
+                    "SUPERCLAUDE_MAX_DELEGATION_DEPTH": _env("SUPERCLAUDE_MAX_DELEGATION_DEPTH", "3"),
+                    "SUPERCLAUDE_AUTO_DELEGATE": _env("SUPERCLAUDE_AUTO_DELEGATE", "false"),
+                },
+            },
             "web-search": {
                 "command": "node",
                 "args": [str(node_servers / "web-search" / "index.js")],

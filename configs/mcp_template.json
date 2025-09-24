@@ -80,6 +80,16 @@
         "GDRIVE_CREDENTIALS_PATH": "${SECURE_CONFIG_ROOT}\\gdrive-credentials.json"
       }
     },
+    "superclaude": {
+      "command": "py",
+      "args": ["${REPO_ROOT}\servers\python\superclaude\superclaude_server.py"],
+      "env": {
+        "SUPERCLAUDE_PLAN_DIR": "${REPO_ROOT}\documentation\superclaude_plans",
+        "SUPERCLAUDE_LOG_PATH": "${REPO_ROOT}\logs\superclaude_decisions.log",
+        "SUPERCLAUDE_MAX_DELEGATION_DEPTH": "${SUPERCLAUDE_MAX_DELEGATION_DEPTH}",
+        "SUPERCLAUDE_AUTO_DELEGATE": "${SUPERCLAUDE_AUTO_DELEGATE}"
+      }
+    },
     "web-search": {
       "command": "node",
       "args": ["${REPO_ROOT}\\servers\\node\\web-search\\index.js"],

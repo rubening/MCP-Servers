@@ -51,8 +51,10 @@ py -m pytest -q
 - Adopt `BaseMCPServer` and `ToolSpec` from `mcp_core` when touching existing servers.
 - Centralize configuration and policy via shared helpers before adding bespoke logic.
 - SuperClaude orchestration depends on accurate tool metadata; keep schemas descriptive and up to date.
+- Capture meaningful server updates in `CHANGELOG.md` (run `py scripts/update_changelog.py --category Added --message "Server tweak"`).
 
 Follow these practices to keep the server layer consistent while the refactor proceeds.
+
 
 
 
