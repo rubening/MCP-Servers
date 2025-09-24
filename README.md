@@ -3,155 +3,68 @@
 
 ## Overview
 
-This repository manages our complete MCP (Model Context Protocol) server ecosystem, providing organized storage, version control, and deployment management for all server components.
+This repository houses the full MCP (Model Context Protocol) server ecosystem that powers Claude Desktop and related automation flows. The repo is optimized for multi-language servers, centralized configuration, and disciplined promotion from experiment to production.
 
-## Repository Structure
+## Repository Layout
 
-### Core Infrastructure
-**Location:** `core-infrastructure/`
-Essential servers providing basic functionality:
-- **filesystem** - File and directory operations
-- **execute-command** - Shell command execution
-- **git** - Version control operations  
-- **youtube** - Video processing and management
+- `servers/python/` - Production Python MCP servers (filesystem, execute-command, git, analytics, knowledge, business tooling, Google integrations, YouTube).
+- `servers/node/` - Node-based MCP servers (currently the web search bridge).
+- `business-tools/` - In-flight and specialized automation projects ready for promotion into `servers/python/`.
+- `configs/` - Claude Desktop configuration templates and generated outputs.
+- `scripts/` - Tooling for config generation and repo automation.
+- `documentation/` - System guides, runbooks, and historical reports.
+- `data/` - Local database files, schemas, and helper scripts.
 
-### External Services
-**Location:** `external-services/`
-Third-party service integrations:
-- **mcp-github** - GitHub API integration
-- **clickup** - Project management integration
-- **gdrive** - Google Drive operations
-- **n8n-mcp** - Workflow automation
-- **playwright** - Web automation and testing
-
-### Analytics & Intelligence
-**Location:** `analytics-intelligence/`
-Data analysis and knowledge management:
-- **e5-marketing-research** - Marketing intelligence
-- **personal-knowledge-intelligence** - Knowledge capture and retrieval
-- **duckdb-analytics** - Business intelligence and analytics
-- **chroma-secure** - Vector database for secure data
-
-### AI & Reasoning
-**Location:** `ai-reasoning/`
-AI-powered analysis and reasoning tools:
-- **deepseek** - Advanced reasoning and chat capabilities
-
-### Business Tools
-**Location:** `business-tools/`
-Business process and workflow management:
-- **lead-qualification** - Lead scoring and qualification
-- **project-management** - Project tracking and management
-- **project-instructions-generator** - Project documentation automation
-
-### Tony Ramos Law
-**Location:** `tony-ramos-law/`
-Client-specific tools and integrations:
-- **swiss-army-knife-copywriter** - Perry Marshall copywriting methodology
-- **google-ads-mcp** - Specialized Google Ads campaign generation
-
-### Experimental
-**Location:** `experimental/`
-Servers under development and testing:
-- **mcp-project-optimizer** - Project analysis and optimization
-- **web-search-mcp-server** - Web search capabilities
-- **priority-management** - Priority and task management
-
-### Archived
-**Location:** `archived/`
-Deprecated servers maintained for reference
+A per-server `README.md` or `CLAUDE.md` documents usage, dependencies, and integration notes.
 
 ## Quick Start
 
 ### Prerequisites
-- Python 3.8+ with MCP support
-- Node.js 16+ (for Node.js-based servers)
+- Python 3.11+ with MCP-capable CLI (`py` on Windows recommended)
+- Node.js 18+ (for Node-based servers)
 - Git for version control
-- Required API keys (see individual server documentation)
+- Claude Desktop or Claude Code CLI configured for MCP servers
+- Required API keys stored in environment variables (see individual server docs)
 
-### Installation
-1. Clone this repository
-2. Navigate to desired server directory
-3. Install dependencies: `pip install -r requirements.txt` or `npm install`
-4. Configure environment variables
-5. Add server to Claude Desktop configuration
+### Running a Python Server
+```powershell
+cd servers/python/filesystem
+py filesystem.py
+```
+
+### Running a Node Server
+```powershell
+cd servers/node/web-search
+npm install
+npm start
+```
 
 ### Configuration
-Update your Claude Desktop configuration (`claude_desktop_config.json`) with server paths and environment variables. See individual server directories for specific configuration requirements.
+Run `py scripts/generate_config.py` to produce `configs/claude_desktop_config.json`-compatible output at `scripts/claude_desktop_config.local.json`. Override paths with environment variables (`MCP_REPO_ROOT`, `MCP_DATA_ROOT`, etc.) and ensure secrets are injected through env vars before copying into Claude Desktop.
 
 ## Development Workflow
 
-### Experimental Server Promotion
-1. **Development**: Create in `experimental/` directory
-2. **Testing**: Run comprehensive test suites
-3. **Documentation**: Complete README and API documentation
-4. **Review**: Code review and performance validation
-5. **Promotion**: Move to appropriate category directory
-6. **Integration**: Update main configuration and deploy
+1. Build or iterate on a server inside `servers/python/<name>` or `servers/node/<name>`.
+2. Keep tooling small and composable; business-specific logic lives in business-tool modules until it graduates.
+3. Document every server and update `configs/` when paths or environment variables change.
+4. Use feature branches for work-in-progress and submit PRs with tests and docs.
+5. Promote experimental servers by moving them into `servers/python/` after meeting testing and documentation standards.
 
-### Version Control
-- **Main branch**: Production-ready servers only
-- **Feature branches**: Development and experimental work
-- **Tags**: Release versions and stable snapshots
-- **Automated testing**: GitHub Actions for continuous integration
+Automated linting, protocol smoke tests, and integration orchestration for SuperClaude will be added as part of the ongoing refactor.
 
-## Backup and Recovery
+## Security & Operations
 
-### Automated Backups
-- **Nightly**: Full repository backup to OneDrive
-- **Weekly**: Complete system snapshots
-- **Monthly**: Archive and cleanup old versions
-
-### Recovery Procedures
-1. Restore from GitHub main branch for code
-2. Restore databases from latest backup snapshots
-3. Reconfigure environment variables and API keys
-4. Verify server connectivity and functionality
-
-## Security
-
-### API Key Management
-- Never commit API keys to version control
-- Use environment variables for sensitive data
-- Rotate keys regularly
-- Monitor access and usage
-
-### Access Control
-- Private repository with restricted access
-- Two-factor authentication required
-- Signed commits for production changes
-- Regular security audits
-
-## Contributing
-
-### Code Standards
-- Follow Python PEP 8 and JavaScript Standard Style
-- Include comprehensive test coverage
-- Document all public APIs
-- Use semantic versioning for releases
-
-### Testing Requirements
-- Unit tests for all functions
-- Integration tests for external services
-- Performance benchmarks for optimization
-- Security testing for sensitive operations
-
-## Support
-
-### Documentation
-- Individual server README files
-- API documentation in `/docs`
-- Troubleshooting guides
-- Configuration examples
-
-### Issue Tracking
-- GitHub Issues for bug reports
-- Feature requests via GitHub Discussions
-- Security issues via private disclosure
+- Never commit live API keys - use environment variables and `.env` files excluded from version control.
+- Databases in `data/` are local-only artifacts; back them up with the documented OneDrive jobs.
+- Logging directories default to `~/Claude Tools/logs`. Adjust via configuration rather than code edits where possible.
+- Follow the existing backup cadence (nightly, weekly, monthly) and validate restores after major changes.
 
 ---
 
-**Repository Status**: Active Development  
-**Last Updated**: July 22, 2025  
-**Maintained By**: Ruben Sanchez  
-**License**: Private/Proprietary
+**Repository Status:** Active Development  
+**Maintained By:** Ruben Sanchez  
+**License:** Private/Proprietary
+
+
+
+

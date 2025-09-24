@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mcp-servers"
+version = "0.1.0"
+description = "Shared utilities for the MCP server ecosystem"
+readme = "README.md"
+license = { text = "Proprietary" }
+requires-python = ">=3.11"
+authors = [
+  { name = "Ruben Sanchez" }
+]
+dependencies = [
+  "requests>=2.31.0"
+]
+
+[project.optional-dependencies]
+analytics = ["duckdb>=0.10"]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
